@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class Project extends BaseObject{
 
-    private int cost = 1000;
+    private int cost ;
     private Set<Developer> projectDevelopers;
 
     public Project(){

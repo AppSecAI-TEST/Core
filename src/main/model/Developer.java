@@ -4,8 +4,8 @@ import java.util.Set;
 
 public class Developer extends BaseObject {
 
-    private int experience = 1;
-    private int salary = 500;
+    private int experience;
+    private int salary ;
 
     private Set<Skill> skills;
 
