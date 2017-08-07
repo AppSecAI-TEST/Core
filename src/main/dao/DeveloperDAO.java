@@ -9,12 +9,12 @@ public interface DeveloperDao {
 
     void create(Developer developer) throws IOException;
 
-    Developer getById(int id);
+    Developer getById(Integer id) ;
 
     List<Developer> getAll();
 
-    void update(Developer developer);
+    void update(Developer developer) throws IOException;
 
-    void delete(int id);
+    void delete(Integer id) throws IOException;
 
 }

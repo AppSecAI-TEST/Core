@@ -9,6 +9,7 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) throws IOException {
+
         Set<Skill> skills = new TreeSet<>();
         Developer developer = new Developer();
         DeveloperMethods methods = new DeveloperMethods();
