@@ -4,8 +4,9 @@ import java.util.Set;
 
 public class Developer extends BaseObject {
 
-    private int experience;
-    private int salary ;
+    private String surname;
+    private Integer experience;
+    private Integer salary;
 
     private Set<Skill> skills;
 
@@ -13,32 +14,23 @@ public class Developer extends BaseObject {
 
     }
 
-    public Developer(int id, String name) {
-        super(id, name);
+    public Developer(Integer id, String name, Set<Skill> skills, Integer experience, Integer salary) {
+        super(id, name, salary, skills);
     }
 
-    public int getExperience() {
+    public String getSurname(){
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+    public Integer getExperience(){
         return experience;
     }
 
-    public void setExperience(int experience) {
+    public void setExperience(Integer experience) {
         this.experience = experience;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public Set<Skill> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(Set<Skill> skills) {
-        this.skills = skills;
     }
 
     @Override

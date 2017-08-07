@@ -11,8 +11,8 @@ public class Project extends BaseObject{
 
     }
 
-    public Project(int id, String name) {
-        super(id, name);
+    public Project(Integer id, String name, Integer salary, Set<Skill> skills) {
+        super(id, name, salary, skills);
     }
 
     public int getCost() {

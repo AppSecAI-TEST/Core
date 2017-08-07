@@ -7,8 +7,8 @@ public class Team extends BaseObject {
     private int cost = 1000;
     private Set<Developer> teamDevelopers;
 
-    public Team(int id, String name) {
-        super(id, name);
+    public Team(Integer id, String name, Integer salary, Set<Skill> skills) {
+        super(id, name, salary, skills);
     }
 
     public Team() {

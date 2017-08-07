@@ -10,7 +10,7 @@ public class DeveloperMethods implements DeveloperDao {
     public static final String path = "Base.txt";
 
     public void create(Developer developer) throws IOException {
-        String finalstring = developer.getId() + "," + developer.getName() + "," +
+        String finalstring = developer.getId() + "," + developer.getName() + "," + developer.getSurname() + "," +
                 developer.getSkills() + "," + developer.getExperience() + "," + developer.getSalary();
         BufferedReader in = new BufferedReader(new StringReader(finalstring));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path, true)));

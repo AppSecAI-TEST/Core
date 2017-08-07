@@ -1,6 +1,7 @@
 package main.model;
 
 import java.util.Map;
+import java.util.Set;
 
 public class Company extends BaseObject {
 
@@ -10,8 +11,8 @@ public class Company extends BaseObject {
 
     }
 
-    public Company(int id, String name) {
-        super(id, name);
+    public Company(Integer id, String name, Integer salary, Set<Skill> skills) {
+        super(id, name, salary, skills);
     }
 
     public Map<Project, Integer> getCompanyProjects() {

@@ -1,21 +1,20 @@
 package main.model;
 
+import java.util.Set;
+
 public abstract class BaseObject {
-    private Integer id;
-    private String name;
-    private String surname;
-    private String skills;
-    private Integer experience;
+    Integer id;
+    String name;
     private Integer salary;
 
+    private Set<Skill> skills;
 
-    public BaseObject(Integer id, String name, String surname, String skills, Integer experience, Integer salary) {
+
+    public BaseObject(Integer id, String name, Integer salary, Set<Skill> skills) {
         this.id = id;
         this.name = name;
-        this.surname = surname;
-        this.skills = skills;
-        this.experience = experience;
         this.salary = salary;
+        this.skills = skills;
     }
 
     public BaseObject() {
@@ -38,28 +37,12 @@ public abstract class BaseObject {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getSkills() {
+    public Set<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(String skills) {
+    public void setSkills(Set<Skill> skills) {
         this.skills = skills;
-    }
-
-    public Integer getExperience() {
-        return experience;
-    }
-
-    public void setExperience(Integer experience) {
-        this.experience = experience;
     }
 
     public Integer getSalary() {
