@@ -8,9 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class DeveloperMethods implements DeveloperDao {
+public class DeveloperDaoImpl implements DeveloperDao {
 
-    public static final String path = "Base.txt";
+    public static final String path = "Developers.txt";
 
     public void create(Developer developer) throws IOException {
         String finalstring = developer.getId() + "," + developer.getName() + "," + developer.getSurname() + "," +
