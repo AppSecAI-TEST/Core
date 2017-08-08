@@ -51,6 +51,9 @@ public class Developer extends NameEntity {
     public void setSkills(Set<Skill> skills) {
         this.skills = skills;
     }
+    public void addSkill(Skill skill){
+        this.skills.add(skill);
+    }
 
     @Override
     public String toString() {

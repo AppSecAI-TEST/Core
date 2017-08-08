@@ -2,17 +2,19 @@ package main.dao;
 
 import main.model.Skill;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
-public interface SkillDao{
+public interface SkillDao {
 
-    void create(Skill skill) ;
+    void addSkill(Integer id, String skill) throws IOException;
 
-    Skill getById(int id) ;
+    Skill getById(Integer id) ;
 
-    List<Skill> getAll() ;
+    List<Skill> getAll() throws IOException;
 
     void update(Skill skill) ;
 
-    void delete(int id) ;
+    void delete(Integer id) ;
 }
