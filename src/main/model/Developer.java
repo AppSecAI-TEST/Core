@@ -8,7 +8,7 @@ public class Developer extends NameEntity {
     private Integer experience;
     private Integer salary;
 
-    private Set<Skill> skills;
+    private Set<Skill> skills ;
 
     public Developer() {
 
@@ -45,14 +45,13 @@ public class Developer extends NameEntity {
     }
 
     public Set<Skill> getSkills() {
+
         return skills;
     }
 
-    public void setSkills(Set<Skill> skills) {
-        this.skills = skills;
-    }
     public void addSkill(Skill skill){
-        this.skills.add(skill);
+
+        this.skills = skills;
     }
 
     @Override
@@ -60,6 +59,7 @@ public class Developer extends NameEntity {
         StringBuilder builder = new StringBuilder("Developer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", surname" + surname +
                 ", experience=" + experience +
                 ", salary=" + salary +
                 ", skills:\n");

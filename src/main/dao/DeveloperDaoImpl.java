@@ -1,6 +1,7 @@
 package main.dao;
 
 import main.model.Developer;
+import main.model.Skill;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -56,34 +57,36 @@ public class DeveloperDaoImpl implements DeveloperDao {
     }
 
     public void delete(Integer id) throws IOException {
-            Scanner sc = new Scanner(new File(path));
-            List<String> resultList = new ArrayList<>();
-            while (sc.hasNext()) {
-                String line = sc.nextLine();
-                List<String> devList = new ArrayList<>(Arrays.asList(line.split("\\n")));
-                for (int i = 0; i < devList.size(); i++) {
-                    String[] dev = devList.get(i).split(",");
-                    if (dev[0].equals(id.toString())) {
-                        devList.remove(i);
-                    } else {
-                        resultList.add(devList.get(i));
-                    }
-                    System.out.println(devList);
-                }
-            }
+        Scanner sc = new Scanner(new File(path));
+        List<String> resultList = new ArrayList<>();
 
-            try (PrintWriter writer = new PrintWriter(path)) {
-                for (String string : resultList) {
-                    writer.write(string);
-                    System.out.println(string);
-                    writer.write("\n");
+        while (sc.hasNext()) {
+            String line = sc.nextLine();
+            List<String> devList = new ArrayList<>(Arrays.asList(line.split("\\n")));
+            for (int i = 0; i < devList.size(); i++) {
+                String[] dev = devList.get(i).split(",");
+                if (dev[0].equals(id.toString())) {
+                    devList.remove(i);
+                } else {
+                    resultList.add(devList.get(i));
                 }
+                System.out.println(devList);
             }
-
         }
 
-    public Developer getById(Integer id)  {
+        try (PrintWriter writer = new PrintWriter(path)) {
+            for (String string : resultList) {
+                writer.write(string);
+                System.out.println(string);
+                writer.write("\n");
+            }
+        }
+
+    }
+
+    public Developer getById(Integer id) {
         Developer developer = new Developer();
+        Skill skill = new Skill();
         try {
             Scanner scanner = new Scanner(new File(path));
             while (scanner.hasNextLine()) {
@@ -92,7 +95,7 @@ public class DeveloperDaoImpl implements DeveloperDao {
                 if (devList.get(0).equals(id.toString())) {
                     developer.setName(devList.get(1));
                     developer.setSurname(devList.get(2));
-                    developer.setSkills(null);
+                    developer.addSkill(skill);
                     developer.setExperience(Integer.parseInt(devList.get(4)));
                     developer.setSalary(Integer.parseInt(devList.get(5)));
                 }
@@ -104,9 +107,33 @@ public class DeveloperDaoImpl implements DeveloperDao {
         return developer;
     }
 
-    public List<Developer> getAll(){
-//        List<Developer> developers = (List<Developer>);
-        return null;
+    public List<Developer> getAll() throws IOException {
+        List<Developer> devList = new ArrayList<>();
+        Developer developer = null;
+
+        Scanner scanner = new Scanner(new File(path));
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            List<String> devData = new ArrayList<>(Arrays.asList(line.split(",")));
+            developer = new Developer();
+
+            int devId = Integer.parseInt(devData.get(0));
+            String devName = devData.get(1);
+            String devSurname = devData.get(2);
+            String devSkill = devData.get(3);
+            int devExp = Integer.parseInt(devData.get(4));
+            int devSalaty = Integer.parseInt(devData.get(5));
+
+            developer.setId(devId);
+            developer.setName(devName);
+            developer.setSurname(devSurname);
+            developer.addSkill(devSkill);
+            developer.setExperience(devExp);
+            developer.setSalary(devSalaty);
+            devList.add(developer);
+        }
+        System.out.println(devList);
+        return devList;
     }
 
 }

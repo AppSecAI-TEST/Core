@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class SkillDaoImpl implements SkillDao {
+public class SkillDaoImpl extends Skill implements SkillDao {
 
     public static final String path = "Skills.txt";
 
@@ -56,7 +56,7 @@ public class SkillDaoImpl implements SkillDao {
             skill.setId(skillId);
             skill.setName(skillName);
             skilList.add(skill);
-            }
+        }
         System.out.println(skilList);
         return skilList;
     }
@@ -99,6 +99,7 @@ public class SkillDaoImpl implements SkillDao {
     public void delete(Integer id) throws IOException {
         Scanner sc = new Scanner(new File(path));
         List<String> resultList = new ArrayList<>();
+
         while (sc.hasNext()) {
             String line = sc.nextLine();
             List<String> skilList = new ArrayList<>(Arrays.asList(line.split("\\n")));

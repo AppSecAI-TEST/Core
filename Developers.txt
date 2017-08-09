@@ -1,2 +1,1 @@
-1,Ivan,null,[Skill{id=1, specialty='PHP'}, Skill{id=2, specialty='Java'}, Skill{id=3, specialty='CSS'}],2,4000
-
+1,Ivan,Ivanov,null,2,4000
