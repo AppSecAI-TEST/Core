@@ -62,12 +62,64 @@ public class SkillDaoImpl implements SkillDao {
     }
 
     @Override
-    public void update(Skill skill) {
+    public void update(Skill skill) throws IOException {
+        Scanner sc = new Scanner(new File(path));
+        List<String> resultList = new ArrayList<>();
+        String finalstring = skill.getId() + "," + skill.getName();
 
+        while (sc.hasNext()) {
+            String line = sc.nextLine();
+            String pID = String.valueOf(skill.getId());
+            List<String> skilList = new ArrayList<>(Arrays.asList(line.split("\\n")));
+            for (int i = 0; i < skilList.size(); i++) {
+                String[] dev = skilList.get(i).split(",");
+                if (dev[0].equals(pID)) {
+                    skilList.remove(i);
+                } else {
+                    resultList.add(skilList.get(i));
+                }
+            }
+        }
+
+        try (PrintWriter writer = new PrintWriter(path)) {
+            for (String string : resultList) {
+                writer.write(string);
+                System.out.println(string);
+                writer.write("\n");
+            }
+        }
+        BufferedReader in = new BufferedReader(new StringReader(finalstring));
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path, true)));
+        while ((finalstring = in.readLine()) != null)
+            out.println(finalstring);
+        out.close();
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer id) throws IOException {
+        Scanner sc = new Scanner(new File(path));
+        List<String> resultList = new ArrayList<>();
+        while (sc.hasNext()) {
+            String line = sc.nextLine();
+            List<String> skilList = new ArrayList<>(Arrays.asList(line.split("\\n")));
+            for (int i = 0; i < skilList.size(); i++) {
+                String[] dev = skilList.get(i).split(",");
+                if (dev[0].equals(id.toString())) {
+                    skilList.remove(i);
+                } else {
+                    resultList.add(skilList.get(i));
+                }
+                System.out.println(skilList);
+            }
+        }
+
+        try (PrintWriter writer = new PrintWriter(path)) {
+            for (String string : resultList) {
+                writer.write(string);
+                System.out.println(string);
+                writer.write("\n");
+            }
+        }
 
     }
 }

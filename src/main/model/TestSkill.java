@@ -7,7 +7,8 @@ import java.io.IOException;
 public class TestSkill {
     public static void main(String[] args) throws IOException {
         SkillDaoImpl dao = new SkillDaoImpl();
-        dao.getAll();
+        Skill skill = new Skill(2,"Angular");
+        dao.delete(2);
 
 
     }
