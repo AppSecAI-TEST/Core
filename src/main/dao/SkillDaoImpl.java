@@ -13,8 +13,8 @@ public class SkillDaoImpl implements SkillDao {
     public static final String path = "Skills.txt";
 
     @Override
-    public void addSkill(Integer id, String skill) throws IOException {
-        String skillline = id + " , " + skill;
+    public void createSkill(Integer id, String skill) throws IOException {
+        String skillline = id + "," + skill;
         BufferedReader in = new BufferedReader(new StringReader(skillline));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path, true)));
         while ((skillline = in.readLine()) != null)
@@ -43,16 +43,22 @@ public class SkillDaoImpl implements SkillDao {
 
     @Override
     public List<Skill> getAll() throws IOException {
-        List<Skill> list = new ArrayList<>();
+        List<Skill> skilList = new ArrayList<>();
+        Skill skill = null;
 
         Scanner scanner = new Scanner(new File(path));
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
-            List<String> skillList = new ArrayList<>(Arrays.asList(line.split(",")));
-            list.add(skillList.get(2));
+            List<String> skillData = new ArrayList<>(Arrays.asList(line.split(",")));
+            int skillId = Integer.parseInt(skillData.get(0));
+            String skillName = skillData.get(1);
+            skill = new Skill();
+            skill.setId(skillId);
+            skill.setName(skillName);
+            skilList.add(skill);
             }
-
-        return list;
+        System.out.println(skilList);
+        return skilList;
     }
 
     @Override
