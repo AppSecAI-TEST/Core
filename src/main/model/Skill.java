@@ -1,9 +1,14 @@
 package main.model;
 
+import main.dao.SkillDaoImpl;
+
 public class Skill extends NameEntity {
 
     public Skill() {
 
+    }
+    public Skill(Integer id){
+        super(id);
     }
 
     public Skill(Integer id, String name) {

@@ -12,6 +12,10 @@ public class NameEntity extends BaseEntity {
         this.name = name;
     }
 
+    public NameEntity(Integer id) {
+        super(id);
+    }
+
     public String getName() {
         return name;
     }
